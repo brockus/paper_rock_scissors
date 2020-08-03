@@ -1,13 +1,14 @@
-# C Project
+# Paper Rock Scissors
 
-![Mac OSX host system](https://github.com/michaelbrockus/c_project_template/workflows/Mac%20OSX%20host%20system/badge.svg)
-![Windows 10 host system](https://github.com/michaelbrockus/c_project_template/workflows/Windows%2010%20host%20system/badge.svg)
-![Linux host system](https://github.com/michaelbrockus/c_project_template/workflows/Linux%20host%20system/badge.svg)
-![Linux Distro Builder](https://github.com/michaelbrockus/c_project_template/workflows/Linux%20Distro%20Builder/badge.svg)
+![Mac OSX host system](https://github.com/michaelbrockus/paper_rock_scissors/workflows/Mac%20OSX%20host%20system/badge.svg)
+![Windows 10 host system](https://github.com/michaelbrockus/paper_rock_scissors/workflows/Windows%2010%20host%20system/badge.svg)
+![Linux host system](https://github.com/michaelbrockus/paper_rock_scissors/workflows/Linux%20host%20system/badge.svg)
+![Linux Distro Builder](https://github.com/michaelbrockus/paper_rock_scissors/workflows/Linux%20Distro%20Builder/badge.svg)
 
 ## About
 
-Please add relevant information about your application.
+Welcome to an exciting game of paper rock scissors. This game features
+a battle between player and computer and weapons for the player to choose.
 
 ## Setup and Compile
 ------------------------------------------------
@@ -24,6 +25,12 @@ configured Meson project, this can be done with the following:
 
 ```console
 meson compile -C <<builddir name>>
+```
+
+To run the game just do this.
+
+```
+prs
 ```
 
 ## Contact the developer
