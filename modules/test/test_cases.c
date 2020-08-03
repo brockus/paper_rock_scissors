@@ -4,18 +4,7 @@
  * gmail: <michaelbrockus@gmail.com>
  */
 #include <unity.h>
-
-/*
- * This function is called from project.c
- */
-extern const char *greet(void);
-
-/*
- *  Prototype functions from the external test file.
- */
-void test_simpleAssertTrue(void);
-void test_simpleAssertNull(void);
-void test_simpleAssertCall(void);
+#include "project.h"
 
 /*
  *  Functions for setup and teardown.
@@ -30,17 +19,70 @@ void tearDown(void)
     // TODO.
 } //end of function tearDown
 
-void test_simpleAssertTrue(void)
+//
+// Testing game rules for weapons used between both the
+// computer and the player. It's Important to check if
+// the logic is not fatal and returns the expected value.
+//
+void test_winsGame_ifPlayerSelectedPaper_and_ComputerSelectedRock(void)
 {
-    TEST_ASSERT_TRUE(1);
-} //end of test case
+    int result = 0;
+    checkSelection("paper", "rock", &result);
+    TEST_ASSERT_EQUAL_INT(1, result);
+} // end of test case
 
-void test_simpleAssertNull(void)
+void test_loseGame_ifPlayerSelectedScissors_and_ComputerSelectedRock(void)
 {
-    TEST_ASSERT_NULL(NULL);
-} //end of test case
+    int result = 0;
+    checkSelection("scissors", "rock", &result);
+    TEST_ASSERT_EQUAL_INT(0, result);
+} // end of test case
 
-void test_simpleAssertCall(void)
+void test_drawGame_ifPlayerSelectedRock_and_ComputerSelectedRock(void)
 {
-    TEST_ASSERT_EQUAL_STRING("Hello, C Developer.", greet());
-} //end of test case
+    int result = 0;
+    checkSelection("rock", "rock", &result);
+    TEST_ASSERT_EQUAL_INT(2, result);
+} // end of test case
+
+void test_winsGame_ifPlayerSelectedScissors_and_ComputerSelectedPaper(void)
+{
+    int result = 0;
+    checkSelection("scissors", "paper", &result);
+    TEST_ASSERT_EQUAL_INT(1, result);
+} // end of test case
+
+void test_loseGame_ifPlayerSelectedRock_and_ComputerSelectedPaper(void)
+{
+    int result = 0;
+    checkSelection("rock", "paper", &result);
+    TEST_ASSERT_EQUAL_INT(0, result);
+} // end of test case
+
+void test_drawGame_ifPlayerSelectedPaper_and_ComputerSelectedPaper(void)
+{
+    int result = 0;
+    checkSelection("paper", "paper", &result);
+    TEST_ASSERT_EQUAL_INT(2, result);
+} // end of test case
+
+void test_winsGame_ifPlayerSelectedRock_and_ComputerSelectedScissors(void)
+{
+    int result = 0;
+    checkSelection("rock", "scissors", &result);
+    TEST_ASSERT_EQUAL_INT(1, result);
+} // end of test case
+
+void test_loseGame_ifPlayerSelectedPaper_and_ComputerSelectedScissors(void)
+{
+    int result = 0;
+    checkSelection("paper", "scissors", &result);
+    TEST_ASSERT_EQUAL_INT(0, result);
+} // end of test case
+
+void test_drawGame_ifPlayerSelectedScissors_and_ComputerSelectedScissors(void)
+{
+    int result = 0;
+    checkSelection("scissors", "scissors", &result);
+    TEST_ASSERT_EQUAL_INT(2, result);
+} // end of test case
