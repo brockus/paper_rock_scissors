@@ -1,1 +1,1 @@
-executable('prog', files('main.c'), dependencies: [code_dep])
+executable('prs', files('main.c'), dependencies: [code_dep])
