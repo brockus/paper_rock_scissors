@@ -67,7 +67,6 @@ void checkSelection(char *guess, char *selection, int *state)
 //
 void randomSelection(char *selection)
 {
-    srand((unsigned int)time(NULL));
     int randNum = rand() % 3;
 
     if (randNum == 0)
@@ -100,6 +99,8 @@ void mainExecution(void)
     checkStringMemory(selection);
 
     int state = 0; // Makes the user win, lose or the game is a draw
+
+    srand((unsigned int)time(NULL));
 
     for (unsigned int game = 1; game <= MAX_GAMES; ++game)
     {
