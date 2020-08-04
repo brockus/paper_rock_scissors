@@ -10,15 +10,15 @@
 //
 void printResult(int state)
 {
-    if (state == 2)
+    if (state == STATE_DRAW)
     {
         puts("Draw!,");
     } // end if
-    else if (state == 1)
+    else if (state == STATE_WINS)
     {
         puts("You win!,");
     } // end else if
-    else if (state == 0)
+    else if (state == STATE_LOSE)
     {
         puts("You lose!,");
     } // end else if
