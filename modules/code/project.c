@@ -101,7 +101,7 @@ void mainExecution(void)
 
     int state = 0; // Makes the user win, lose or the game is a draw
 
-    for (unsigned int game = 1; game <= MAX_GAMES; ++game)
+    for (unsigned int game = 1; game <= MIN_GAMES; ++game)
     {
         playerMenu();
         fgets(guess, OPTION_CHAR_SIZE, stdin);
