@@ -28,14 +28,25 @@
 #include <string.h> // For use in strcpy
 
 //
-// here we define an enum that holds the max
-// size of our input values.
+// here we have a some handy enums. we use them
+// to hardcoding those values.
 enum
 {
-    MAX_SIZE = 100,
+    OPTION_CHAR_SIZE = 15
+}; // end of const enum
+
+enum
+{
     MAX_GAMES = 10,
     MIN_GAMES = 3
-};
+}; // end of default
+
+enum
+{
+    STATE_WINS = 1,
+    STATE_LOSE = 0,
+    STATE_DRAW = 2
+}; // end of state enum
 
 // main logic functions
 void checkSelection(char *guess, char *selection, int *state);
