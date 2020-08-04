@@ -15,15 +15,15 @@ void checkSelection(char *guess, char *selection, int *state)
     {
         if (!strcmp(selection, "paper"))
         {
-            *state = 0;
+            *state = STATE_LOSE;
         } // end if
         if (!strcmp(selection, "scissors"))
         {
-            *state = 1;
+            *state = STATE_WINS;
         } // end if
         if (!strcmp(selection, "rock"))
         {
-            *state = 2;
+            *state = STATE_DRAW;
         } // end if
     } // end if
     else if (!strcmp(guess, "paper"))
@@ -31,15 +31,15 @@ void checkSelection(char *guess, char *selection, int *state)
         printf("%i\n", 2);
         if (!strcmp(selection, "paper"))
         {
-            *state = 2;
+            *state = STATE_DRAW;
         } // end if
         if (!strcmp(selection, "scissors"))
         {
-            *state = 0;
+            *state = STATE_LOSE;
         } // end if
         if (!strcmp(selection, "rock"))
         {
-            *state = 1;
+            *state = STATE_WINS;
         } // end if
     } // end else if
     else if (!strcmp(guess, "scissors"))
@@ -47,15 +47,15 @@ void checkSelection(char *guess, char *selection, int *state)
         printf("%i\n", 3);
         if (!strcmp(selection, "paper"))
         {
-            *state = 1;
+            *state = STATE_WINS;
         } // end if
         if (!strcmp(selection, "scissors"))
         {
-            *state = 2;
+            *state = STATE_DRAW;
         } // end if
         if (!strcmp(selection, "rock"))
         {
-            *state = 0;
+            *state = STATE_LOSE;
         } // end if
 
     } // end else if
@@ -72,15 +72,15 @@ void randomSelection(char *selection)
 
     if (randNum == 0)
     {
-        strncpy(selection, "rock", 10);
+        strncpy(selection, "rock", OPTION_CHAR_SIZE);
     } // end if
     else if (randNum == 1)
     {
-        strncpy(selection, "paper", 10);
+        strncpy(selection, "paper", OPTION_CHAR_SIZE);
     } // end else if
     else
     {
-        strncpy(selection, "scissors", 10);
+        strncpy(selection, "scissors", OPTION_CHAR_SIZE);
     } // end else
 }
 
@@ -91,12 +91,12 @@ void mainExecution(void)
 {
     //
     // The users guess ie. (rock, paper, scissors)
-    char *guess = malloc(sizeof(*guess) * MAX_SIZE);
+    char *guess = malloc(sizeof(*guess) * OPTION_CHAR_SIZE);
     checkStringMemory(guess);
 
     //
     // The computers selection (rock, paper, scissors)
-    char *selection = malloc(sizeof(*selection) * MAX_SIZE);
+    char *selection = malloc(sizeof(*selection) * OPTION_CHAR_SIZE);
     checkStringMemory(selection);
 
     int state = 0; // Makes the user win, lose or the game is a draw
@@ -104,7 +104,7 @@ void mainExecution(void)
     for (unsigned int game = 1; game <= MAX_GAMES; ++game)
     {
         playerMenu();
-        fgets(guess, MAX_SIZE, stdin);
+        fgets(guess, OPTION_CHAR_SIZE, stdin);
         stripNewLine(guess); // Sets the last character as a null terminator, so it can be compared
 
         randomSelection(selection); // Gets a random selection for the computer
