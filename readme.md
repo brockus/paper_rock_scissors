@@ -27,11 +27,7 @@ configured Meson project, this can be done with the following:
 meson compile -C <<builddir name>>
 ```
 
-To run the game just do this.
-
-```
-prs
-```
+To run the game just run `prs`.
 
 ## Contact the developer
 ------------------------------------------------
