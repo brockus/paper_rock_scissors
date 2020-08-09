@@ -28,7 +28,6 @@ void checkSelection(char *guess, char *selection, int *state)
     } // end if
     else if (!strcmp(guess, "paper"))
     {
-        printf("%i\n", 2);
         if (!strcmp(selection, "paper"))
         {
             *state = STATE_DRAW;
@@ -44,7 +43,6 @@ void checkSelection(char *guess, char *selection, int *state)
     } // end else if
     else if (!strcmp(guess, "scissors"))
     {
-        printf("%i\n", 3);
         if (!strcmp(selection, "paper"))
         {
             *state = STATE_WINS;
@@ -109,7 +107,10 @@ void mainExecution(void)
         stripNewLine(guess); // Sets the last character as a null terminator, so it can be compared
 
         randomSelection(selection); // Gets a random selection for the computer
-        printf("%s %s\n%s %s\n", "Your Guess: ", guess, "Computer guess: ", selection);
+        puts("--------------");
+        printf("%s %s\n", "Your Guess: ", guess);
+        printf("%s %s\n", "Computer guess: ", selection);
+        puts("--------------");
 
         checkSelection(guess, selection, &state); // Checks who won or if it is a draw
         printResult(state); // Prints the result
