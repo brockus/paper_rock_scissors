@@ -13,14 +13,17 @@ void printResult(int state)
     if (state == STATE_DRAW)
     {
         puts("Draw!,");
+        puts("--------------");
     } // end if
     else if (state == STATE_WINS)
     {
         puts("You win!,");
+        puts("--------------");
     } // end else if
     else if (state == STATE_LOSE)
     {
         puts("You lose!,");
+        puts("--------------");
     } // end else if
 } // end of function printResult
 
@@ -30,6 +33,10 @@ void printResult(int state)
 void playerMenu(void)
 {
     puts("Type in your weapon name");
-    printf("1 %s:\n 2 %s:\n 3 %s:\n", "paper", "rock", "scissors");
+    puts("------------------------");
+    printf(" > : %s \n", "paper");
+    printf(" > : %s \n", "rock");
+    printf(" > : %s \n", "scissors");
+    puts("------------------------");
     printf("%s", "Type in: ");
 } // end of function playerMenu
