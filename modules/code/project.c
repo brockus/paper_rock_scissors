@@ -5,6 +5,9 @@
  */
 #include "project.h"
 
+int PLAYER_SCORE = 0;
+int COMPUT_SCORE = 0;
+
 //
 // Compares the users guess with the computers selection and changes the game-state
 // The game-state sets if the player is going to win, lose or it is going to be a draw
@@ -15,10 +18,12 @@ void checkSelection(char *guess, char *selection, int *state)
     {
         if (!strcmp(selection, "paper"))
         {
+            ++COMPUT_SCORE;
             *state = STATE_LOSE;
         } // end if
         if (!strcmp(selection, "scissors"))
         {
+            ++PLAYER_SCORE;
             *state = STATE_WINS;
         } // end if
         if (!strcmp(selection, "rock"))
@@ -34,10 +39,12 @@ void checkSelection(char *guess, char *selection, int *state)
         } // end if
         if (!strcmp(selection, "scissors"))
         {
+            ++COMPUT_SCORE;
             *state = STATE_LOSE;
         } // end if
         if (!strcmp(selection, "rock"))
         {
+            ++PLAYER_SCORE;
             *state = STATE_WINS;
         } // end if
     } // end else if
@@ -45,6 +52,7 @@ void checkSelection(char *guess, char *selection, int *state)
     {
         if (!strcmp(selection, "paper"))
         {
+            ++PLAYER_SCORE;
             *state = STATE_WINS;
         } // end if
         if (!strcmp(selection, "scissors"))
@@ -53,6 +61,7 @@ void checkSelection(char *guess, char *selection, int *state)
         } // end if
         if (!strcmp(selection, "rock"))
         {
+            ++COMPUT_SCORE;
             *state = STATE_LOSE;
         } // end if
 
@@ -107,14 +116,14 @@ void mainExecution(void)
         stripNewLine(guess); // Sets the last character as a null terminator, so it can be compared
 
         randomSelection(selection); // Gets a random selection for the computer
-        puts("--------------");
-        printf("%s %s\n", "Your Guess: ", guess);
-        printf("%s %s\n", "Computer guess: ", selection);
-        puts("--------------");
+        printWeaponsResult(guess, selection);
+        
 
         checkSelection(guess, selection, &state); // Checks who won or if it is a draw
         printResult(state); // Prints the result
     } // end for
+
+    scoreboard(&PLAYER_SCORE, &COMPUT_SCORE);
 
     free(guess);
     free(selection);

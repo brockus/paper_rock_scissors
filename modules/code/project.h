@@ -38,7 +38,7 @@ enum
 enum
 {
     MAX_GAMES = 10,
-    MIN_GAMES = 3
+    MIN_GAMES = 3    
 }; // end of default
 
 enum
@@ -57,6 +57,8 @@ void checkStringMemory(char *string);
 void stripNewLine(char *string);
 
 // message output functions
+void printWeaponsResult(const char * guess, const char * selection);
+void scoreboard(int *playerScore, int *computerScore);
 void printResult(int state);
 void playerMenu(void);
 
