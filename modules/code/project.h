@@ -49,7 +49,7 @@ enum
 }; // end of state enum
 
 // main logic functions
-void mainExecution(void);
+void mainExecution(int game_cnt);
 void checkSelection(char *guess, char *selection, int *state);
 
 // utility functions

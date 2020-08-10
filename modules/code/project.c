@@ -93,7 +93,7 @@ void randomSelection(char *selection)
 //
 // Starts all program logic execution
 //
-void mainExecution(void)
+void mainExecution(int game_cnt)
 {
     //
     // The users guess ie. (rock, paper, scissors)
@@ -109,7 +109,7 @@ void mainExecution(void)
 
     srand((unsigned int)time(NULL));
 
-    for (unsigned int game = 1; game <= MIN_GAMES; ++game)
+    for (unsigned int game = 0; game < game_cnt; ++game)
     {
         playerMenu();
         fgets(guess, OPTION_CHAR_SIZE, stdin);
