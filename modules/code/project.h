@@ -49,7 +49,7 @@ enum
 }; // end of state enum
 
 // main logic functions
-void mainExecution(int game_cnt);
+void mainExecution(int argc, char ** argv);
 void checkSelection(char *guess, char *selection, int *state);
 
 // utility functions
@@ -57,6 +57,7 @@ void checkStringMemory(char *string);
 void stripNewLine(char *string);
 
 // message output functions
+void usage(char* program_name);
 void printWeaponsResult(const char * guess, const char * selection);
 void scoreboard(int *playerScore, int *computerScore);
 void printResult(int state);

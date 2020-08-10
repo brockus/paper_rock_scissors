@@ -6,6 +6,14 @@
 #include "project.h"
 
 //
+// Print valid usage
+//
+void usage(char* program_name)
+{
+    printf("Usage: %s [--num_games <number>]\n", program_name);
+}
+
+//
 // Prints the result, ie if the user losses, wins or it is a draw
 //
 void printResult(int state)

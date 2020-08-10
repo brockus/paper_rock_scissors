@@ -8,6 +8,8 @@
 int PLAYER_SCORE = 0;
 int COMPUT_SCORE = 0;
 
+int numberOfGames = MIN_GAMES;
+
 //
 // Compares the users guess with the computers selection and changes the game-state
 // The game-state sets if the player is going to win, lose or it is going to be a draw
@@ -91,10 +93,46 @@ void randomSelection(char *selection)
 }
 
 //
+// Check and parse passed in user arguments
+//
+void checkArguments(int argc, char ** argv)
+{
+    //
+    // No arguments is valid. Only parse if arguments were passed
+    if (argc > 1)
+    {
+        //
+        // The only switch that is currently understood is
+        // the optional "--num-games <number>" switch
+        if (argc != 3 ||
+            strcmp(argv[1], "--num-games"))
+        {
+            printf("Invalid command format or switch\n");
+            usage(argv[0]);
+            exit(EXIT_FAILURE);
+        }
+
+        //
+        // Get the number of games and make sure it is valid
+        numberOfGames = atoi(argv[2]);
+        if (numberOfGames <= 0)
+        {
+            printf("Invalid number of games: %s\n", argv[2]);
+            usage(argv[0]);
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+
+//
 // Starts all program logic execution
 //
-void mainExecution(int game_cnt)
+void mainExecution(int argc, char ** argv)
 {
+    //
+    // Check and parse any user requested arguments
+    checkArguments(argc, argv);
+
     //
     // The users guess ie. (rock, paper, scissors)
     char *guess = malloc(sizeof(*guess) * OPTION_CHAR_SIZE);
@@ -109,7 +147,7 @@ void mainExecution(int game_cnt)
 
     srand((unsigned int)time(NULL));
 
-    for (unsigned int game = 1; game <= game_cnt; ++game)
+    for (unsigned int game = 1; game <= numberOfGames; ++game)
     {
         playerMenu();
         fgets(guess, OPTION_CHAR_SIZE, stdin);
