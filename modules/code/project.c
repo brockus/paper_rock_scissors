@@ -109,7 +109,7 @@ void mainExecution(int game_cnt)
 
     srand((unsigned int)time(NULL));
 
-    for (unsigned int game = 0; game < game_cnt; ++game)
+    for (unsigned int game = 1; game <= game_cnt; ++game)
     {
         playerMenu();
         fgets(guess, OPTION_CHAR_SIZE, stdin);
