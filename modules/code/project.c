@@ -8,7 +8,7 @@
 int PLAYER_SCORE = 0;
 int COMPUT_SCORE = 0;
 
-int numberOfGames = MIN_GAMES;
+int NUMBER_OF_GAMES = MIN_GAMES;
 
 //
 // Compares the users guess with the computers selection and changes the game-state
@@ -114,8 +114,8 @@ void checkArguments(int argc, char ** argv)
 
         //
         // Get the number of games and make sure it is valid
-        numberOfGames = atoi(argv[2]);
-        if (numberOfGames <= 0)
+        NUMBER_OF_GAMES = atoi(argv[2]);
+        if (NUMBER_OF_GAMES <= 0)
         {
             printf("Invalid number of games: %s\n", argv[2]);
             usage(argv[0]);
@@ -147,7 +147,7 @@ void mainExecution(int argc, char ** argv)
 
     srand((unsigned int)time(NULL));
 
-    for (unsigned int game = 1; game <= numberOfGames; ++game)
+    for (unsigned int game = 1; game <= NUMBER_OF_GAMES; ++game)
     {
         playerMenu();
         fgets(guess, OPTION_CHAR_SIZE, stdin);

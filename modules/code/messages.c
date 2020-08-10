@@ -8,9 +8,9 @@
 //
 // Print valid usage
 //
-void usage(char* program_name)
+void usage(char* programName)
 {
-    printf("Usage: %s [--num_games <number>]\n", program_name);
+    printf("Usage: %s [--num_games <number>]\n", programName);
 }
 
 //
