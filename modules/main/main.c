@@ -9,6 +9,6 @@
 // main is where program execution starts
 int main(int argc, char ** argv)
 {
-    mainExecution();
+    mainExecution(argc, argv);
     return EXIT_SUCCESS;
 } // end of function main
