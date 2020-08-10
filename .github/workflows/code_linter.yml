@@ -4,16 +4,29 @@ on:
   push:
   pull_request:
 
-
 jobs:
-  linux:
-    runs-on: ubuntu-latest
+  code_linter:
+    runs-on: ubuntu-18.04
+
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+
+    - name: Docker login
+      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
+      env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Pull Docker image
+      run: docker pull "docker.pkg.github.com/${{ env.DISTRO_ATHOR }}/ubuntu-ci-sys:latest"
+
+    - name: Run image
+      run: docker run -it -d --name builder -v $GITHUB_WORKSPACE:/workspace -w /workspace docker.pkg.github.com/${{ env.DISTRO_ATHOR }}/ubuntu-ci-sys:latest
+
+    - name: Setup, Test and Linter
+      run: docker exec builder bash -c 'meson setup build && meson compile -C build && cppcheck --project=build/compile_commands.json'
+
+    - name: Upload package
+      uses: actions/upload-artifact@v2
       with:
-        python-version: '3.x'
-    - run: pip install meson ninja
-    - run: meson setup build -Dwith_tests=true
-    - run: meson test -C build -v
-    - run: cppcheck --project=build/compile_commands.json
+        name: ${{ env.DISTRO_PACKAGE }}-ubuntu-host
+        path: ./build/meson-out/
