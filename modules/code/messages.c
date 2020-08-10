@@ -40,3 +40,25 @@ void playerMenu(void)
     puts("------------------------");
     printf("%s", "Type in: ");
 } // end of function playerMenu
+
+
+//
+// Show both player and computer points scored
+//
+void scoreboard(int *playerScore, int *computerScore)
+{
+    puts("\n(Game Score)------------\n");
+    printf(" Player (%.2d) Computer (%.2d):\n", *playerScore, *computerScore);
+    puts("\n------------------------");
+} // end of function playerMenu
+
+//
+// Show both player and computer weapon selected
+//
+void printWeaponsResult(const char * guess, const char * selection)
+{
+    puts("------------------------");
+    printf("%s '%s'\n", "Player Guess  : ", guess);
+    printf("%s '%s'\n", "Computer guess: ", selection);
+    puts("------------------------");
+} // end of function printWeaponsResult
