@@ -27,7 +27,13 @@ configured Meson project, this can be done with the following:
 meson compile -C <<builddir name>>
 ```
 
-To run the game just run `prs`.
+To run the game for one time just use `prs`.
+The number of games can be extended to a specified number of loops
+by using the `--num-games` switch as follows to run this five times:
+
+```console
+prs --num-games 5
+```
 
 ## Contact the developer
 ------------------------------------------------
